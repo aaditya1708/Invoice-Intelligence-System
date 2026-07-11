@@ -617,8 +617,8 @@ else:
                 """, unsafe_allow_html=True)
 
             st.markdown("<br>", unsafe_allow_html=True)
-            delay = pay_month - invoice_month if pay_month >= invoice_month else (12 - invoice_month + pay_month)
-            po_gap = invoice_month - po_month if invoice_month >= po_month else (12 - po_month + invoice_month)
+            delay = abs(pay_month - invoice_month)
+            po_gap = abs(invoice_month - po_month)
             c1, c2 = st.columns(2)
             with c1:
                 st.metric("Payment Lag", f"{delay} mo")
